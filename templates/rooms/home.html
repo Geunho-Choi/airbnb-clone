@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+<!-- # -->
+
+{% block page_name %} Home {% endblock page_name %}
+
+<!--     block      -->
+<!--     block      -->
+<!--     block      아니 근데.. 왜 띄어씌기 안되냐.. 들여쓰기랑... 설정에서 바꿔야하나..일단 수업부터 듣자-->
+{% block content %}
+<!--      -->
+{% for room in page.object_list %}
+<h1>{{room.name}} / ${{room.price}}</h1>
+{% endfor%}
+<!--  -->
+<h5>
+  <!-- 강의11.3 django template tags@@@@  page넘기는거 너무 신기하당.. -->
+  {% if page.has_previous %}
+  <!--강의 11.4 - 이게 뭐지.. has_previous하니까 바로 적용이되네..-->
+  <!--  -->
+  <a href="?page={{page.previous_page_number|add:-1}}"> Previous</a>
+  {% endif %}
+  <!--  -->
+
+  Page {{page.number}} of {{page.paginator.num_pages}}<!-- 강의11.4 - 잘모르겠음...paginator..낯설다 -->
+  <!--  -->
+  {% if page.has_next %}
+  <a href="?page={{page.next_page_number|add:+1}}"> Next</a>
+  {% endif %}
+  <!-- 페이지가 limit을 넘어서 계속 넘어가는 문제가 생겨서, 조건문을 사용해줌.  -->
+</h5>
+
+{% for page in page.paginator.page_range%}
+
+<a href="?page={{page}}"> {{page}} </a>
+<!-- 강의11.2 - 오호..간단하네...페이지 딱 해주고 링크까지 걸어주는거.. 신기.. -->
+{% endfor %}
+
+<!--       -->
+{% endblock content %}
