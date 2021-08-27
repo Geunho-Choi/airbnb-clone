@@ -5,10 +5,18 @@ name = "pypi"
 
 [packages]
 pathspec = "*"
+django = "==2.2.5"
 django = "*"
+pillow = "*"
+django-countries = "*"
+django-seed = "*"
+django-dotenv = "*"
+requests = "*"
+sentry-sdk = "==0.13.2"
+django-storages = "*"
+boto3 = "*"
 
 [dev-packages]
-awsebcli = "*"
 black = "*"
 flake8 = "*"
 
@@ -17,3 +25,8 @@ python_version = "3.9"
 
 [pipenv]
 allow_prereleases = true
+
+
+
+
+
