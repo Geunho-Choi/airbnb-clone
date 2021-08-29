@@ -18,12 +18,18 @@ from django.urls import path, include  # 강의10.0 - 1. include추가.
 from django.conf import settings  # 강의8.4 - 1. 장고가 어떤 settings파일들을 내가 얘기하는지 알게될거임.
 from django.conf.urls.static import static
 
+
+def trigger_error(request):
+    division_by_zero = 1 / 0
+
+
 urlpatterns = [
     path("", include("core.urls", namespace="core")),  # 강의10.0 - 2. path추가.
     # path("users", include("users.urls", namespace="users")),
     path("rooms/", include("rooms.urls", namespace="rooms")),  # 강의12.0.
     path("users/", include("users.urls", namespace="users")),
     path("admin/", admin.site.urls),
+    path("sentry-debug/", trigger_error),
 ]
 # url이 장고에서 어떻게 동작하냐면, 왼쪽은 url. 오른쪽은 view.
 
